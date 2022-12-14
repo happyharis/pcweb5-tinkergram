@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import "./App.css";
 
 function App() {
@@ -7,6 +7,9 @@ function App() {
     <Navbar variant="light" bg="light">
       <Container>
         <Navbar.Brand href="#">Tinkergram</Navbar.Brand>
+        <Nav>
+          <Nav.Link href="#">New Post</Nav.Link>
+        </Nav>
       </Container>
     </Navbar>
   );
