@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 import PostPageAdd from "./PostPageAdd";
+import PostPageDetails from "./PostPageDetails";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,11 @@ const router = createBrowserRouter([
   {
     path: "/add",
     element: <PostPageAdd />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/post/:id",
+    element: <PostPageDetails />,
     errorElement: <ErrorPage />,
   },
 ]);

@@ -1,15 +1,15 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Nav, Navbar, Form, Button } from "react-bootstrap";
-import "./App.css";
-import React, { useState } from "react";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState } from "react";
+import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
+import { redirect } from "react-router-dom";
+import "./App.css";
 import { ADD, API } from "./constants";
-import { useNavigate } from "react-router-dom";
 
 export default function PostPageAdd() {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState("");
-  const navigate = useNavigate();
+
   return (
     <>
       <Navbar variant="light" bg="light">
@@ -51,7 +51,7 @@ export default function PostPageAdd() {
               const post = { image, caption };
               try {
                 await axios.post(API + ADD, post);
-                navigate("/");
+                redirect("/");
               } catch (error) {
                 console.error(error.message);
               }
