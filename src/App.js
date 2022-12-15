@@ -1,27 +1,47 @@
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Container, Image, Nav, Navbar, Row } from "react-bootstrap";
 import "./App.css";
 
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+const API = "https://pcweb5-api.haris-samingan.repl.co";
+const POSTS = "/posts";
 
-function ImageCard() {
+function ImageSquare({ post }) {
+  const { image } = post;
   return (
-    <Card style={{ width: "18rem", marginTop: "2rem" }}>
-      <Card.Img variant="top" src="https://zca.sg/img/1" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <Image
+      src={image}
+      style={{
+        objectFit: "cover",
+        width: "18rem",
+        height: "18rem",
+        marginTop: "2rem",
+      }}
+    />
   );
 }
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
+  async function getAllPosts() {
+    try {
+      const response = await axios.get(API + POSTS);
+      const posts = response.data;
+      console.log(posts);
+      setPosts(posts);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getAllPosts();
+  }, []);
+
+  const ImagesRow = () =>
+    posts.map((post, index) => <ImageSquare key={index} post={post} />);
   return (
     <>
       <Navbar variant="light" bg="light">
@@ -34,11 +54,7 @@ function App() {
       </Navbar>
       <Container>
         <Row>
-          <Col>
-            <ImageCard />
-          </Col>
-
-          <div style={{ width: "580px" }}></div>
+          <ImagesRow />
         </Row>
       </Container>
     </>
