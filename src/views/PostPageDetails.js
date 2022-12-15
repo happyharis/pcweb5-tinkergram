@@ -30,7 +30,7 @@ export default function PostPageDetails() {
 
   useEffect(() => {
     getPost(id);
-  });
+  }, [id]);
 
   return (
     <>
