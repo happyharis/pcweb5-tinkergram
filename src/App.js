@@ -3,9 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import { Container, Image, Nav, Navbar, Row } from "react-bootstrap";
 import "./App.css";
-
-const API = "https://pcweb5-api.haris-samingan.repl.co";
-const POSTS = "/posts";
+import { API, POSTS } from "./constants";
 
 function ImageSquare({ post }) {
   const { image } = post;

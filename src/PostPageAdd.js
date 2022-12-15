@@ -1,9 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Nav, Navbar, Form, Button } from "react-bootstrap";
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { ADD, API } from "./constants";
+import { useNavigate } from "react-router-dom";
 
 export default function PostPageAdd() {
+  const [caption, setCaption] = useState("");
+  const [image, setImage] = useState("");
+  const navigate = useNavigate();
   return (
     <>
       <Navbar variant="light" bg="light">
@@ -19,17 +25,38 @@ export default function PostPageAdd() {
         <Form>
           <Form.Group className="mb-3" controlId="caption">
             <Form.Label>Caption</Form.Label>
-            <Form.Control type="text" placeholder="Lovely day" />
+            <Form.Control
+              type="text"
+              placeholder="Lovely day"
+              value={caption}
+              onChange={(text) => setCaption(text.target.value)}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="image">
             <Form.Label>Image URL</Form.Label>
-            <Form.Control type="text" placeholder="https://zca.sg/img/1" />
+            <Form.Control
+              type="text"
+              placeholder="https://zca.sg/img/1"
+              value={image}
+              onChange={(text) => setImage(text.target.value)}
+            />
             <Form.Text className="text-muted">
               Make sure the url has a image type at the end: jpg, jpeg, png.
             </Form.Text>
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button
+            variant="primary"
+            onClick={async (e) => {
+              const post = { image, caption };
+              try {
+                await axios.post(API + ADD, post);
+                navigate("/");
+              } catch (error) {
+                console.error(error.message);
+              }
+            }}
+          >
             Submit
           </Button>
         </Form>
