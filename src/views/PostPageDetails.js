@@ -3,8 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Image, Nav, Navbar, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import "./App.css";
-import { API, DELETE, POST } from "./constants";
+
+import { API, DELETE, POST } from "../constants";
 
 export default function PostPageDetails() {
   const [caption, setCaption] = useState("");
@@ -51,7 +51,7 @@ export default function PostPageDetails() {
             <Card>
               <Card.Body>
                 <Card.Text>{caption}</Card.Text>
-                <Card.Link href="#">Edit</Card.Link>
+                <Card.Link href={`/update/${id}`}>Edit</Card.Link>
                 <Card.Link onClick={() => deletePost(id)}>Delete</Card.Link>
               </Card.Body>
             </Card>

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import { Container, Image, Nav, Navbar, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./App.css";
+
 import { API, POSTS } from "./constants";
 
 function ImageSquare({ post }) {

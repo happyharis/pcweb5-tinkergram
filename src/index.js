@@ -4,9 +4,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./ErrorPage";
-import PostPageAdd from "./PostPageAdd";
-import PostPageDetails from "./PostPageDetails";
+import ErrorPage from "./views/ErrorPage";
+import PostPageAdd from "./views/PostPageAdd";
+import PostPageDetails from "./views/PostPageDetails";
+import PostPageUpdate from "./views/PostPageUpdate";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
   {
     path: "/post/:id",
     element: <PostPageDetails />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/update/:id",
+    element: <PostPageUpdate />,
     errorElement: <ErrorPage />,
   },
 ]);

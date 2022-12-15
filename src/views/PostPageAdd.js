@@ -3,8 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "./App.css";
-import { ADD, API } from "./constants";
+
+import { ADD, API } from "../constants";
 
 export default function PostPageAdd() {
   const [caption, setCaption] = useState("");
