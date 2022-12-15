@@ -2,13 +2,14 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
 import { ADD, API } from "./constants";
 
 export default function PostPageAdd() {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState("");
+  const navigate = useNavigate();
 
   return (
     <>
@@ -51,7 +52,7 @@ export default function PostPageAdd() {
               const post = { image, caption };
               try {
                 await axios.post(API + ADD, post);
-                redirect("/");
+                navigate("/");
               } catch (error) {
                 console.error(error.message);
               }

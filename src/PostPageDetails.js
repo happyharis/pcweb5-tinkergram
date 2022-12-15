@@ -2,14 +2,16 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Image, Nav, Navbar, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { redirect, useNavigate, useParams } from "react-router-dom";
 import "./App.css";
-import { API, POST } from "./constants";
+import { API, DELETE, POST } from "./constants";
 
 export default function PostPageDetails() {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState("");
   const params = useParams();
+  const id = params.id;
+  const navigate = useNavigate();
 
   async function getPost(id) {
     const url = API + POST + `/${id}`;
@@ -19,8 +21,14 @@ export default function PostPageDetails() {
     setImage(image);
   }
 
+  async function deletePost(id) {
+    const url = API + DELETE + `/${id}`;
+    console.log(url);
+    await axios.delete(url);
+    navigate("/");
+  }
+
   useEffect(() => {
-    const id = params.id;
     getPost(id);
   });
 
@@ -44,7 +52,7 @@ export default function PostPageDetails() {
               <Card.Body>
                 <Card.Text>{caption}</Card.Text>
                 <Card.Link href="#">Edit</Card.Link>
-                <Card.Link href="#">Delete</Card.Link>
+                <Card.Link onClick={() => deletePost(id)}>Delete</Card.Link>
               </Card.Body>
             </Card>
           </Col>
