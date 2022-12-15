@@ -46,9 +46,9 @@ function App() {
     <>
       <Navbar variant="light" bg="light">
         <Container>
-          <Navbar.Brand href="#">Tinkergram</Navbar.Brand>
+          <Navbar.Brand href="/">Tinkergram</Navbar.Brand>
           <Nav>
-            <Nav.Link href="#">New Post</Nav.Link>
+            <Nav.Link href="/add">New Post</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
