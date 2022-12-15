@@ -2,21 +2,30 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import { Container, Image, Nav, Navbar, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./App.css";
 import { API, POSTS } from "./constants";
 
 function ImageSquare({ post }) {
-  const { image } = post;
+  const { image, id } = post;
   return (
-    <Image
-      src={image}
+    <Link
+      to={`post/${id}`}
       style={{
-        objectFit: "cover",
         width: "18rem",
-        height: "18rem",
+        marginLeft: "1rem",
         marginTop: "2rem",
       }}
-    />
+    >
+      <Image
+        src={image}
+        style={{
+          objectFit: "cover",
+          width: "18rem",
+          height: "18rem",
+        }}
+      />
+    </Link>
   );
 }
 

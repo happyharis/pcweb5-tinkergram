@@ -1,7 +1,7 @@
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
-import { Container, Image, Nav, Navbar } from "react-bootstrap";
+import { Card, Col, Container, Image, Nav, Navbar, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import "./App.css";
 import { API, POST } from "./constants";
@@ -35,8 +35,20 @@ export default function PostPageDetails() {
         </Container>
       </Navbar>
       <Container>
-        <Image src={image} style={{ width: "50%", height: "50%" }} />
-        <p>{caption}</p>
+        <Row style={{ marginTop: "2rem" }}>
+          <Col xl="6">
+            <Image src={image} style={{ width: "100%" }} />
+          </Col>
+          <Col>
+            <Card>
+              <Card.Body>
+                <Card.Text>{caption}</Card.Text>
+                <Card.Link href="#">Edit</Card.Link>
+                <Card.Link href="#">Delete</Card.Link>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       </Container>
     </>
   );
