@@ -2,7 +2,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Image, Nav, Navbar, Row } from "react-bootstrap";
-import { redirect, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./App.css";
 import { API, DELETE, POST } from "./constants";
 
